@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.MyApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".NavDrawer.ModelBottomSheetPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.BottomSheetPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.ModelNavDrawerPage2"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.ModelNavDrawerPage1"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.ModelNavDrawerPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.SideNavPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NavDrawer.NavDrawerPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.ToggleButtonsPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.SwitchPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.RadioButtonsPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.CheckBoxPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.ProgressIndicatorPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.SnackBarPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Selector.SelectorPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".BottomAppBarNav.BottomNavigationPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".BottomAppBarNav.BottomAppBarPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".BottomAppBarNav.BottomAppBarNavPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".BottomAppBarNav.AppBarTabPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.LazyVerticalStaggeredGridPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.VerticalListItemsPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.DynamicLazyVerticalGridPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.LazyVerticalGridPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.LazyRowPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.LazyColumnPage2"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.LazyColumnPage1"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ListGrid.MainListGridPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.TextFieldPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.ButtonPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.SurfacePage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.LayoutPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.TextPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.ImagePage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
