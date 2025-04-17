@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -34,12 +37,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalDensity
@@ -52,17 +58,18 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.chirag.jetpack.compose.BottomAppBarNav.AppBarTabPage
-import com.chirag.jetpack.compose.BottomAppBarNav.BottomAppBarNavPage
 import com.chirag.jetpack.compose.Activity.ButtonPage
 import com.chirag.jetpack.compose.Activity.ImagePage
 import com.chirag.jetpack.compose.Activity.LayoutPage
 import com.chirag.jetpack.compose.Activity.SurfacePage
 import com.chirag.jetpack.compose.Activity.TextFieldPage
 import com.chirag.jetpack.compose.Activity.TextPage
+import com.chirag.jetpack.compose.BottomAppBarNav.AppBarTabPage
+import com.chirag.jetpack.compose.BottomAppBarNav.BottomAppBarNavPage
 import com.chirag.jetpack.compose.ListGrid.MainListGridPage
 import com.chirag.jetpack.compose.NavDrawer.NavDrawerPage
 import com.chirag.jetpack.compose.Selector.SelectorPage
+import com.chirag.jetpack.compose.theme.ChiragAppTheme
 import com.chirag.jetpack.compose.theme.Clr1
 import com.chirag.jetpack.compose.theme.Clr10
 import com.chirag.jetpack.compose.theme.Clr2
@@ -84,9 +91,9 @@ import com.chirag.jetpack.compose.theme.L_Clr6
 import com.chirag.jetpack.compose.theme.L_Clr7
 import com.chirag.jetpack.compose.theme.L_Clr8
 import com.chirag.jetpack.compose.theme.L_Clr9
-import com.chirag.jetpack.compose.theme.ChiragAppTheme
 import com.chirag.jetpack.compose.theme.White
 import com.chirag.jetpack.compose.ui.JumpToTopButton
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -139,7 +146,8 @@ class MainActivity : ComponentActivity() {
                         .fillMaxHeight(),
                     content = {
                         item {
-                            selectedButton(R.drawable.ic_font, "Text", Clr1, L_Clr1,
+                            selectedButton(
+                                R.drawable.ic_font, "Text", Clr1, L_Clr1,
                                 tags = listOf(
                                     "Simple Text",
                                     "String Resource Text",
@@ -157,9 +165,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, TextPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_image, "Image", Clr2, L_Clr2,
+                            selectedButton(
+                                R.drawable.ic_image, "Image", Clr2, L_Clr2,
                                 tags = listOf(
                                     "Icon",
                                     "Simple Image",
@@ -173,9 +183,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, ImagePage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_layout, "Layout", Clr3, L_Clr3,
+                            selectedButton(
+                                R.drawable.ic_layout, "Layout", Clr3, L_Clr3,
                                 tags = listOf(
                                     "Row",
                                     "Column",
@@ -192,9 +204,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, LayoutPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_layout, "Surface", Clr4, L_Clr4,
+                            selectedButton(
+                                R.drawable.ic_layout, "Surface", Clr4, L_Clr4,
                                 tags = listOf(
                                     "Clickable",
                                     "Surface",
@@ -208,9 +222,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, SurfacePage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_button, "Button", Clr5, L_Clr5,
+                            selectedButton(
+                                R.drawable.ic_button, "Button", Clr5, L_Clr5,
                                 tags = listOf(
                                     "Simple Button",
                                     "Disabled Button",
@@ -228,9 +244,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, ButtonPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_edit_text, "Text Field", Clr6, L_Clr6,
+                            selectedButton(
+                                R.drawable.ic_edit_text, "Text Field", Clr6, L_Clr6,
                                 tags = listOf(
                                     "Simple TextField",
                                     "Error TextField",
@@ -254,9 +272,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, TextFieldPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_button, "Selector", Clr7, L_Clr7,
+                            selectedButton(
+                                R.drawable.ic_button, "Selector", Clr7, L_Clr7,
                                 tags = listOf(
                                     "SnackBar",
                                     "ProgressBar",
@@ -272,9 +292,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, SelectorPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_listgrid, "List & Grid", Clr8, L_Clr8,
+                            selectedButton(
+                                R.drawable.ic_listgrid, "List & Grid", Clr8, L_Clr8,
                                 tags = listOf(
                                     "Row",
                                     "Column",
@@ -291,9 +313,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, MainListGridPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_appbar, "Top AppBar & Tabs", Clr9, L_Clr9,
+                            selectedButton(
+                                R.drawable.ic_appbar, "Top AppBar & Tabs", Clr9, L_Clr9,
                                 tags = listOf(
                                     "Compose",
                                     "Top AppBar",
@@ -309,9 +333,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, AppBarTabPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_layout,
+                            selectedButton(
+                                R.drawable.ic_layout,
                                 "Bottom AppBar & Navigation",
                                 Clr10,
                                 L_Clr10,
@@ -326,9 +352,11 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, BottomAppBarNavPage::class.java
                                         )
                                     )
+
                                 })
 
-                            selectedButton(R.drawable.ic_navdrawer,
+                            selectedButton(
+                                R.drawable.ic_navdrawer,
                                 "Navigation Drawer",
                                 Clr1,
                                 L_Clr1,
@@ -349,11 +377,16 @@ class MainActivity : ComponentActivity() {
                                             this@MainActivity, NavDrawerPage::class.java
                                         )
                                     )
+//                                    overridePendingTransition(
+//                                        R.anim.slide_in_right,
+//                                        R.anim.slide_out_left
+//                                    )
                                 })
 
 //  -------------------------- EXTRA------------------------------
 
-                            selectedButton(R.drawable.ic_image, "Image", Clr2, L_Clr2,
+                            selectedButton(
+                                R.drawable.ic_image, "Image", Clr2, L_Clr2,
                                 tags = listOf(
                                     "Icon",
                                     "Simple Image",
@@ -369,7 +402,8 @@ class MainActivity : ComponentActivity() {
                                     )
                                 })
 
-                            selectedButton(R.drawable.ic_layout, "Layout", Clr3, L_Clr3,
+                            selectedButton(
+                                R.drawable.ic_layout, "Layout", Clr3, L_Clr3,
                                 tags = listOf(
                                     "Row",
                                     "Column",
@@ -428,8 +462,32 @@ fun selectedButton(
     tags: List<String> = listOf(),
     onIntent: () -> Unit
 ) {
+    var isPressed by remember { mutableStateOf(false) }
+    val scale by animateFloatAsState(
+        targetValue = if (isPressed) 0.92f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessLow
+        ),
+        label = "Advanced Button Scale"
+    )
+    val scope = rememberCoroutineScope()
+
     Row(
         modifier = Modifier
+            .scale(scale)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null
+            ) {
+                scope.launch {
+                    isPressed = true
+                    delay(100) // shorter delay to match bounce
+                    onIntent()
+                    delay(100) // let it bounce back
+                    isPressed = false
+                }
+            }
             .fillMaxWidth()
             .height(80.dp)
             .padding(horizontal = 15.dp, vertical = 7.dp),
@@ -453,6 +511,7 @@ fun selectedButton(
                 contentDescription = null,
                 colorFilter = ColorFilter.tint(White),
                 modifier = Modifier
+                    .fillMaxWidth()
                     .height(40.dp)
                     .width(40.dp)
             )

@@ -37,3 +37,36 @@ fun ChiragAppTheme(
         content = content
     )
 }
+
+//@Composable
+//fun ChiragAppTheme(
+//    useDarkTheme: Boolean = isSystemInDarkTheme(),
+//    content: @Composable() () -> Unit
+//) {
+//    val context = LocalContext.current
+//    val colors = when {
+//        (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) -> {
+//            if (useDarkTheme) dynamicDarkColorScheme(context)
+//            else dynamicLightColorScheme(context)
+//        }
+//
+//        useDarkTheme -> DarkColorScheme
+//        else -> LightColorScheme
+//    }
+//
+//    val view = LocalView.current
+//    if (!view.isInEditMode) {
+//        SideEffect {
+//            val window = (view.context as Activity).window
+//            window.statusBarColor = colors.primary.toArgb()
+//            WindowCompat
+//                .getInsetsController(window, view)
+//                .isAppearanceLightStatusBars = useDarkTheme
+//        }
+//    }
+//
+//    MaterialTheme(
+//        colorScheme = colors,
+//        content = content
+//    )
+//}

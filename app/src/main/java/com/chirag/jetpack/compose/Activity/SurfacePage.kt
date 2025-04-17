@@ -346,7 +346,7 @@ class SurfacePage : ComponentActivity() {
                     color = Clr2,
                     modifier = Modifier
                         .size(80.dp)
-                        .offset(x = 50.dp, y = (-20).dp)
+                        .offset(x = 50.dp, y = (-30).dp)
                         .clickable(onClick = {
                             Toast
                                 .makeText(

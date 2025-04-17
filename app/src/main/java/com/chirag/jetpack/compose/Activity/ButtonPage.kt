@@ -63,17 +63,14 @@ import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.chirag.jetpack.compose.AppBarTitleText
 import com.chirag.jetpack.compose.R
 import com.chirag.jetpack.compose.SmallTextDescription
 import com.chirag.jetpack.compose.SpaceLine
 import com.chirag.jetpack.compose.TitleText
+import com.chirag.jetpack.compose.theme.ChiragAppTheme
 import com.chirag.jetpack.compose.theme.Clr1
 import com.chirag.jetpack.compose.theme.Clr10
 import com.chirag.jetpack.compose.theme.Clr2
@@ -84,7 +81,6 @@ import com.chirag.jetpack.compose.theme.Clr6
 import com.chirag.jetpack.compose.theme.Clr7
 import com.chirag.jetpack.compose.theme.Clr8
 import com.chirag.jetpack.compose.theme.Clr9
-import com.chirag.jetpack.compose.theme.ChiragAppTheme
 import com.chirag.jetpack.compose.ui.IndicatingIconButton
 
 class ButtonPage : ComponentActivity() {
@@ -126,7 +122,8 @@ class ButtonPage : ComponentActivity() {
                         .width(55.dp)
                         .padding(15.dp)
                         .clipToBounds()
-                        .clickable(indication = null,
+                        .clickable(
+                            indication = null,
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()
@@ -257,7 +254,10 @@ private fun ButtonIcon(modifier: Modifier) {
     SmallTextDescription(
         "1.) Icon + Text Button\n" + "2.) text + Icon Button\n" + "3.) Icon Button\n" + "4.) Icon + Text + Icon Button"
     )
-    Row {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
         Button(
             onClick = {}, modifier = modifier
         ) {
