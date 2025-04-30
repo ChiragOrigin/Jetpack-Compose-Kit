@@ -35,6 +35,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.runtime.Composable
@@ -119,7 +120,7 @@ class BottomAppBarPage : ComponentActivity() {
                         .width(55.dp)
                         .padding(15.dp)
                         .clipToBounds()
-                        .clickable(indication = null,
+                        .clickable(indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() }
                         ) {
                             finish()

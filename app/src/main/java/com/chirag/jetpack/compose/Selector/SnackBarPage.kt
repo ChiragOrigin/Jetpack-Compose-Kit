@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Text
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Button
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.Surface
@@ -84,7 +85,7 @@ class SnackBarPage : ComponentActivity() {
                         .width(55.dp)
                         .padding(15.dp)
                         .clipToBounds()
-                        .clickable(indication = null,
+                        .clickable(indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()

@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -90,7 +91,7 @@ class MainListGridPage : ComponentActivity() {
                         .width(55.dp)
                         .padding(15.dp)
                         .clipToBounds()
-                        .clickable(indication = null,
+                        .clickable(indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()

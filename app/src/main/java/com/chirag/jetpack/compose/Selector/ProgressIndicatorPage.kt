@@ -30,6 +30,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.OutlinedButton
 import androidx.compose.material.ProgressIndicatorDefaults
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.LinearProgressIndicator
@@ -110,7 +111,7 @@ class ProgressIndicatorPage : ComponentActivity() {
                                 .width(55.dp)
                                 .padding(15.dp)
                                 .clipToBounds()
-                                .clickable(indication = null,
+                                .clickable(indication = rememberRipple(color = Color.Black),
                                     interactionSource = remember { MutableInteractionSource() } // This is mandatory
                                 ) {
                                     finish()

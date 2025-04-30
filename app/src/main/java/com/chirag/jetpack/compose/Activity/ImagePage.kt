@@ -27,6 +27,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Email
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -99,7 +100,7 @@ class ImagePage : ComponentActivity() {
                         .padding(15.dp)
                         .clipToBounds()
                         .clickable(
-                            indication = null,
+                            indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()

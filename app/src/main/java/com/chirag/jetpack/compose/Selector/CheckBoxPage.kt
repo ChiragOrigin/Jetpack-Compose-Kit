@@ -32,6 +32,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -104,7 +105,7 @@ class CheckBoxPage : ComponentActivity() {
                                 .width(55.dp)
                                 .padding(15.dp)
                                 .clipToBounds()
-                                .clickable(indication = null,
+                                .clickable(indication = rememberRipple(color = Color.Black),
                                     interactionSource = remember { MutableInteractionSource() } // This is mandatory
                                 ) {
                                     finish()
@@ -368,7 +369,7 @@ class CheckBoxPage : ComponentActivity() {
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .clickable(
-                    indication = null,
+                    indication = rememberRipple(color = Color.Black),
                     onClick = toggleTriState,
                     interactionSource = parentCheckboxInteractionSource
                 )
@@ -404,7 +405,7 @@ class CheckBoxPage : ComponentActivity() {
                 modifier = Modifier
                     .padding(start = 32.dp)
                     .clickable(
-                        indication = null,
+                        indication = rememberRipple(color = Color.Black),
                         onClick = onCheckChangeFun,
                         interactionSource = childCheckboxInteractionSource
                     )
@@ -472,7 +473,7 @@ fun TextCheckbox(label: String, state: Boolean, onStateChange: (Boolean) -> Unit
             .clickable(
                 interactionSource = interactionSource,
                 // This is for removing ripple when Row is clicked
-                indication = null,
+                indication = rememberRipple(color = Color.Black),
                 role = Role.Checkbox,
                 onClick = {
                     onStateChange(!state)

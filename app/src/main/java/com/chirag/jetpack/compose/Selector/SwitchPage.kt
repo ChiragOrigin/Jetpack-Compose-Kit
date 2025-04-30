@@ -31,6 +31,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.rememberSwipeableState
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material.swipeable
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
@@ -109,7 +110,7 @@ class SwitchPage : ComponentActivity() {
                                 .width(55.dp)
                                 .padding(15.dp)
                                 .clipToBounds()
-                                .clickable(indication = null,
+                                .clickable(indication = rememberRipple(color = Color.Black),
                                     interactionSource = remember { MutableInteractionSource() } // This is mandatory
                                 ) {
                                     finish()

@@ -46,6 +46,7 @@ import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -120,7 +121,7 @@ class AppBarTabPage : ComponentActivity() {
                         .width(55.dp)
                         .padding(15.dp)
                         .clipToBounds()
-                        .clickable(indication = null,
+                        .clickable(indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()

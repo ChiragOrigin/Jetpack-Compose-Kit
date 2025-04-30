@@ -185,6 +185,11 @@
             android:name=".Activity.ImagePage"
             android:exported="false"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".Activity.ImageZoomPage"
+            android:exported="false"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

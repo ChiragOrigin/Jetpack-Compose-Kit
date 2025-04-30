@@ -23,6 +23,7 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.RadioButtonDefaults
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Surface
@@ -86,7 +87,7 @@ class RadioButtonsPage : ComponentActivity() {
                             .width(55.dp)
                             .padding(15.dp)
                             .clipToBounds()
-                            .clickable(indication = null,
+                            .clickable(indication = rememberRipple(color = Color.Black),
                                 interactionSource = remember { MutableInteractionSource() } // This is mandatory
                             ) {
                                 finish()

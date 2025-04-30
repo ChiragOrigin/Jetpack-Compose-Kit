@@ -123,7 +123,7 @@ class ButtonPage : ComponentActivity() {
                         .padding(15.dp)
                         .clipToBounds()
                         .clickable(
-                            indication = null,
+                            indication = rememberRipple(color = Color.Gray),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) {
                             finish()

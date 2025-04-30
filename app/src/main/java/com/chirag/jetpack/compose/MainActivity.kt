@@ -29,6 +29,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -60,6 +61,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.chirag.jetpack.compose.Activity.ButtonPage
 import com.chirag.jetpack.compose.Activity.ImagePage
+import com.chirag.jetpack.compose.Activity.ImageZoomPage
 import com.chirag.jetpack.compose.Activity.LayoutPage
 import com.chirag.jetpack.compose.Activity.SurfacePage
 import com.chirag.jetpack.compose.Activity.TextFieldPage
@@ -386,7 +388,7 @@ class MainActivity : ComponentActivity() {
 //  -------------------------- EXTRA------------------------------
 
                             selectedButton(
-                                R.drawable.ic_image, "Image", Clr2, L_Clr2,
+                                R.drawable.ic_image, "Image Zoom Page", Clr2, L_Clr2,
                                 tags = listOf(
                                     "Icon",
                                     "Simple Image",
@@ -397,7 +399,7 @@ class MainActivity : ComponentActivity() {
                                 onIntent = {
                                     startActivity(
                                         Intent(
-                                            this@MainActivity, ImagePage::class.java
+                                            this@MainActivity, ImageZoomPage::class.java
                                         )
                                     )
                                 })
@@ -478,7 +480,7 @@ fun selectedButton(
             .scale(scale)
             .clickable(
                 interactionSource = remember { MutableInteractionSource() },
-                indication = null
+                indication = rememberRipple(color = Color.Black)
             ) {
                 scope.launch {
                     isPressed = true
@@ -501,7 +503,7 @@ fun selectedButton(
                 .clip(RoundedCornerShape(10.dp))
                 .background(color = dark_clr)
                 .clickable(
-                    indication = null,
+                    indication = rememberRipple(color = Color.Black),
                     interactionSource = remember { MutableInteractionSource() } // This is mandatory
                 ) { onIntent() },
             Alignment.Center
@@ -520,7 +522,7 @@ fun selectedButton(
         Column(
             modifier = Modifier
                 .clickable(
-                    indication = null,
+                    indication = rememberRipple(color = Color.Black),
                     interactionSource = remember { MutableInteractionSource() } // This is mandatory
                 ) { onIntent() }
                 .fillMaxHeight()
@@ -552,7 +554,7 @@ fun selectedButton(
                         .clip(RoundedCornerShape(10.dp))
                         .background(color = dark_clr)
                         .clickable(
-                            indication = null,
+                            indication = rememberRipple(color = Color.Black),
                             interactionSource = remember { MutableInteractionSource() } // This is mandatory
                         ) { onIntent() },
                     Alignment.CenterEnd
